@@ -1,24 +1,23 @@
 import { useState } from 'react'
+import { Cookies } from 'react-cookie'
 import './App.css'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 function App() {
   const [count, setCount] = useState(0)
+  const cookies = new Cookies();
 
   const setCookie = () => {
-    // .vercel.app 도메인 간에 공유되는 쿠키 생성
-    const cookieName = 'testcookie'
-    const cookieValue = 'This is a test cookie'
-    const days = 7
-    const domain = '.vercel.app'
-
-    const date = new Date()
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
-    const expires = `expires=${date.toUTCString()}`
-
-    document.cookie = `${cookieName}=${cookieValue};${expires};domain=${domain};path=/;Secure;SameSite=None`
-  }
+    const options = {
+      domain: '.vercel.app',
+      path: '/',
+      secure: true,
+      sameSite: 'none',
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7일 후 만료
+    };
+    cookies.set('testcookie', 'This is a test cookie', options);
+  };
 
   return (
     <>
