@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -6,9 +6,9 @@ import viteLogo from '/vite.svg'
 function App() {
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
+  const setCookie = () => {
     // .vercel.app 도메인 간에 공유되는 쿠키 생성
-    const cookieName = 'testCookie'
+    const cookieName = 'testcookie'
     const cookieValue = 'This is a test cookie'
     const days = 7
     const domain = '.vercel.app'
@@ -18,10 +18,11 @@ function App() {
     const expires = `expires=${date.toUTCString()}`
 
     document.cookie = `${cookieName}=${cookieValue};${expires};domain=${domain};path=/;Secure;SameSite=None`
-  }, [])
+  }
 
   return (
     <>
+      <button onClick={setCookie}>버튼</button>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
