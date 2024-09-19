@@ -17,7 +17,7 @@ function App() {
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
     const expires = `expires=${date.toUTCString()}`
 
-    document.cookie = `${cookieName}=${cookieValue};${expires};domain=${domain};path=/`
+    document.cookie = `${cookieName}=${cookieValue};${expires};domain=${domain};path=/;Secure;SameSite=None`
   }, [])
 
   return (
